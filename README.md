@@ -1,5 +1,5 @@
 # Full-Stack Cloud-Native Development  
-## Lab Project Assignment #2: Building a Cloud-Native App for Best Buy
+## Lab Project Assignment: Building a Cloud-Native App for Best Buy
 
 ## **Scenario**  
 Congratulations! You have been hired as a **Full-Stack Cloud-Native Developer** at Best Buy, a leading electronics retailer. Your manager has assigned you a project to develop a demo **cloud-native application** for Best Buy's online store.  
@@ -116,6 +116,6 @@ Record a **5-minute max demo video** showcasing the following:
 
 --- 
 
-### **Bonus Task: Implement a CI/CD Pipeline for Each Microservice (2 Bonus Marks)**  
+### **Bonus Task: Implement a CI/CD Pipeline for Each Microservice (3 Bonus Marks)**  
 Set up a **Continuous Integration/Continuous Deployment (CI/CD) pipeline** for all microservices to automate building, and deploying the application.
 
