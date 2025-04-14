@@ -1,6 +1,6 @@
 -   **Updated Application Architecture**:
     -   Draw the updated architecture diagram using  `Draw.io`  and include it in the README.
-![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/diagram.png?raw=true)
+![enter image description here](https://raw.githubusercontent.com/lian0138/8915_Final/refs/heads/main/img/diagram.png)
 
 -   **Application and Architecture Explanation**:
     -   Briefly explain the application functionality and how the architecture works.
