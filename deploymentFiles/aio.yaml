@@ -83,7 +83,7 @@ spec:
             - name: ORDER_QUEUE_USERNAME
               value: "sender"
             - name: ORDER_QUEUE_PASSWORD
-              value: "RWuIElEVZL1OHpdyLc1HaVsa/iEXH5YDE+ASbMPPb1Q="
+              value: ""
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: ORDER_QUEUE_TRANSPORT
@@ -165,7 +165,7 @@ spec:
             - name: ORDER_QUEUE_USERNAME
               value: "listener"
             - name: ORDER_QUEUE_PASSWORD
-              value: "BWkxBaSTa+letUlxATUt6HsYprBBzmrIa+ASbBF6dEc="
+              value: ""
             - name: ORDER_QUEUE_NAME
               value: "orders"
             - name: ORDER_DB_URI
