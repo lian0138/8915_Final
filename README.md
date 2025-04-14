@@ -1,121 +1,70 @@
-# Full-Stack Cloud-Native Development  
-## Lab Project Assignment: Building a Cloud-Native App for Best Buy
+-   **Updated Application Architecture**:
+    -   Draw the updated architecture diagram using  `Draw.io`  and include it in the README.
+![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/diagram.png?raw=true)
 
-## **Scenario**  
-Congratulations! You have been hired as a **Full-Stack Cloud-Native Developer** at Best Buy, a leading electronics retailer. Your manager has assigned you a project to develop a demo **cloud-native application** for Best Buy's online store.  
+-   **Application and Architecture Explanation**:
+    -   Briefly explain the application functionality and how the architecture works.
 
-The application architecture must follow the design principles of the **Algonquin Pet Store (On Steroids)**, but with one key change:  
-- **Order Queue Service** must be implemented as a managed backing service (e.g., Azure Service Bus) rather than an owned service like RabbitMQ.  
+The Algonquin BustBuy project is a reimagined e-commerce platform where customers and staff interact through a streamlined architecture. The store-front, built with Vue.js, allows customers to place orders, which are handled by the order-service (Javascript) and sent via Azure Service Bus to the makeline-service (Golang) for processing and completion. Staff use the admin-front, also in Vue.js, to manage products and monitor order queues, interacting with the product-service (Rust) for CRUD operations on products. The makeline-service stores order data in a MongoDB database, ensuring persistence, while the optional ai-service (Python) can generate text and graphics to enhance the platform. The services communicate efficiently through Azure Service Bus, replacing RabbitMQ.
 
-You will design, build, and deploy this application in a Kubernetes cluster and demonstrate its functionality.
+-   **Deployment Instructions**:
+    -   Step-by-step instructions to deploy the application in a Kubernetes cluster.
+ 1. Build a resource group and Azure Kubernetes cluster with enough resources.
+ ![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/Report_001.png?raw=true)
+ ![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/Report_002.png?raw=true)
+Get the subscription ID here
+ 2. Use Azure CLI to connect to the Azure subscription ID. (Linux)
+![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/Report_004.png?raw=true)
+ 4. Build a namespace for this project with the command below.
+```
+kubectl create namespace 8915final
+```
+ 6. Apply the yaml files as the command below
+ ![enter image description here](https://github.com/lian0138/8915_Final/blob/main/img/Report_005.png?raw=true)
+```
+kubectl apply -f config-maps.yaml
+kubectl apply -f secrets.yaml
+kubectl apply -f aio.yaml
+```
 
----
+-   **Table of Microservice Repositories**:
+    -   A table listing each microservice repository and its GitHub link
+        
+        Store-Front
+        https://github.com/lian0138/storeFront_8915final
+        Store-Admin
+        https://github.com/lian0138/storeAdmin_8915final
+        Order-Service
+        https://github.com/lian0138/orderService_8915final
+        Product-Service
+        https://github.com/lian0138/productService_8915final
+        Makeline-Service
+        https://github.com/lian0138/makeLine_8915final
+        AI-Service
+        https://github.com/lian0138/aiService_8915final
 
-## **Assignment Objectives**  
-- Implement a cloud-native application using microservices architecture.   
-- Develop and deploy a full-stack solution for Best Buy using Kubernetes.  
-- Enable AI-powered product descriptions and image generation using GPT-4 and DALL-E.  
----
-
-## **Application Overview**  
-
-The **Best Buy App** must include the following components:  
-
-| Service              | Description                                                                 | Notes                                      |
-|----------------------|-----------------------------------------------------------------------------|--------------------------------------------|
-| **Store-Front**      | Customer-facing app for browsing and placing orders.              |                                           |
-| **Store-Admin**      | Employee-facing app for managing products and viewing orders .     |                                           |
-| **Order-Service**    | Handles order creation and sends data to the managed order queue.          | Replace RabbitMQ with a managed service.  |
-| **Product-Service**  | Handles CRUD operations for product data.                          |                                           |
-| **Makeline-Service** | Processes and completes orders by reading from the order queue.       |                                           |
-| **AI-Service**       | Generates product descriptions and images.                       | Use GPT-4 and DALL-E models.              |
-| **Database**         | MongoDB for persisting order and product data.                            |                                           |
-
----
-
-## **Project Requirements**  
-
-### **1. Application Architecture**  
-Design the application based on the provided diagram of Algonquin Pet Store(On Steroids).
-
-### **2. Microservices Development**  
-You can fork the Algonquin Pet Store repositories and use that as a starting point.
-
-### **3. AI Integration**  
-- Enable AI-generated product descriptions and images using GPT-4 and DALL-E models.  
-- Use Azure OpenAI Services or OpenAI APIs for this integration.  
-
-### **4. Kubernetes Deployment**  
-- Use Kubernetes to deploy all services.  
-- Create ConfigMaps and Secrets for managing application configurations and sensitive information.  
-- Use StatefulSets for MongoDB.  
----
-
-## **Assignment Deliverables**  
-
-Your submission must include the following:
-
-### **1. GitHub Repository**
-The GitHub repository must include:  
-1. A `README.md` file containing:  
-   - **Updated Application Architecture**:  
-     - Draw the updated architecture diagram using `Draw.io` and include it in the README.  
-   - **Application and Architecture Explanation**:  
-     - Briefly explain the application functionality and how the architecture works.  
-   - **Deployment Instructions**:  
-     - Step-by-step instructions to deploy the application in a Kubernetes cluster.  
-   - **Table of Microservice Repositories**:  
-     - A table listing each microservice repository and its GitHub link.  
-     - Example:
-       | **Service**         | **Repository Link**                       |
-       |---------------------|-------------------------------------------|
-       | Store-Front         | `<GitHub Link>`                           |
-       | Order-Service       | `<GitHub Link>`                           |
-   - **Table of Docker Images**:  
-     - A table listing all Docker images you created, including their names and links to their Docker Hub repositories.  
-     - Example:
-       | **Service**         | **Docker Image Link**                     |
-       |---------------------|-------------------------------------------|
-       | Store-Front         | `<Docker Hub Link>`                       |
-       | Order-Service       | `<Docker Hub Link>`                       |
-    - **Any issues or limitations in the implementation (Optional)**
-
-2. A **Deployment Files** subfolder:  
-   - Include all Kubernetes deployment YAML files in a folder named `Deployment Files`.  
-   - Ensure these files are clearly named (e.g., `store-front-deployment.yaml`, `order-service-deployment.yaml`).   
-
-### **2. Demo Video**  
-Record a **5-minute max demo video** showcasing the following:  
-- The application in action after deployment to AKS cluster.  
-- AI-generated product descriptions and images.  
-- Integration with the managed order queue service.  
-
-**Upload the video to YouTube** and include a link to the video in your `README.md` file under a "Demo Video" section.  
-
----
-
-## **Grading Criteria**  
-
-| **Criteria**                           | **Weight** |
-|----------------------------------------|------------|
-| Application Code and Documentation     | 20%        |
-| Integration with Managed Order Queue   | 20%        |
-| AI Integration (GPT-4 and DALL-E)      | 20%        |
-| Kubernetes Deployment                  | 20%        |
-| Demo Video                             | 20%        |
-
----
-
-## **Resources**  
-- **Algonquin Pet Store Repository:** [GitHub Link](https://github.com/ramymohamed10/algonquin-pet-store-on-steroids)  
----
-
-## **Submission Instructions**  
-1. Push your code and deployment files to your GitHub repository.  
-2. Submit the GitHub repository link via Brightspace.  
-
---- 
-
-### **Bonus Task: Implement a CI/CD Pipeline for Each Microservice (3 Bonus Marks)**  
-Set up a **Continuous Integration/Continuous Deployment (CI/CD) pipeline** for all microservices to automate building, and deploying the application.
-
+-   **Table of Docker Images**:
+    -   A table listing all the Docker images you created, including their names and links to their Docker Hub repositories
+        
+        Store-Front: 
+        * chrisxuleung/store-front:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/store-front/tags/8915final/sha256-a269478596e04baf83aa940e832c52040f85abab899ff2128f84dd3a429814f9
+        Store-Admin: 
+        * chrisxuleung/store-admin:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/store-admin/tags/8915final/sha256-839bc2c81ee9610ed4fcc18b58ffbc85baf03a2f1ca733f85a89f3200be6c85c
+        Order-Service: 
+        * chrisxuleung/order-service:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/order-service/tags/8915final/sha256-b3e0b6d9cf54e8894775f68c8b3d7b4aa53a0f98e4e7e8d6b50c10b5dbfa8f59
+        Product-Service: 
+        * chrisxuleung/product-service:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/product-service/tags/8915final/sha256-b0f2f8c8c96685272eee1d00b8c45aa032982b95b438ef7c7af642706203c390
+        Makeline-Service: 
+        * chrisxuleung/makeline-service:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/makeline-service/tags/8915final/sha256-6d8d75e18b2eff4e029311f489f3558fbea337bb58d1f4c89635fcc7f0f6fe00
+        AI-Service: 
+        * chrisxuleung/ai-service:8915final
+        https://hub.docker.com/repository/docker/chrisxuleung/ai-service/tags/8915final/sha256-a90952ffe0d6ec3ed1a1ba983e61be8c7d64d2a594a528a212508bc5679e66de
+        
+-   **Any issues or limitations in the implementation (Optional)**
+1. Azure AI-Service cannot be connect
+2. The CI_CD script is without namespace, so I modified it to support namespace because I made a namespace as 8915final in this project.
