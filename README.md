@@ -33,8 +33,8 @@ kubectl apply -f aio.yaml
 
 | Service | Repo Address |
 | -------- | -------- |
-| Store-Front     | https://github.com/lian0138/storeAdmin_8915final     |
-| Store-Admin   | https://github.com/lian0138/storeFront_8915final     |
+| Store-Front     | https://github.com/lian0138/storeFront_8915final     |
+| Store-Admin   | https://github.com/lian0138/storeAdmin_8915final     |
 | Order-Service | https://github.com/lian0138/orderService_8915final    |
 | Product-Service |  https://github.com/lian0138/productService_8915final     |
 | Makeline-Service  |  https://github.com/lian0138/makeLine_8915final    |
